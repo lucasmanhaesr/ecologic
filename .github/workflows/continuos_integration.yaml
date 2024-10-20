@@ -1,0 +1,21 @@
+name: Continuous Integration
+#Será executado em pull request, na branch develop
+on:
+  pull_request:
+    branches:
+      - dev
+jobs:
+#Nome do trabalho
+  tests:
+#Será executado em um servidor ubuntu
+    runs-on: ubuntu-latest
+#Consiste em 2 etapas: checar o código, instalação da JDK 21
+    steps:
+      -
+        name: Git Checkout
+        uses: actions/checkout@v4
+      -   name: Setup Java SDK
+          uses: actions/setup-java@v4
+          with:
+            distribution: 'temurin'
+            java-version: '21'
