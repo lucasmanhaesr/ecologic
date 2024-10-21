@@ -34,7 +34,7 @@ jobs:
     needs: build
     #Configurando duas variáveis
     environment:
-      #Uma variavel com o nome development
+      #Uma variavel com o nome development que será exibida no momento do deploy no github
       name: 'development'
       #Outra variavel com uma URL virá da configuracao e execucao de um step logo abaixo e a saida desse step é a URL do WebApp
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
@@ -46,7 +46,7 @@ jobs:
         with:
           #Nome correspondente ao WebApp no Servicos de aplicativos do Azure
           app-name: 'ecologic-dev'
-          slot-name: 'development'
+          slot-name: 'production'
           #O deploy será feito na conta salva na secret do Github
           publish-profile: ${{ secrets.AZURE_PROFILE }}
           #E também o deploy será feito usando a imagem do DockerHub e tag da imagem será o ID do commit
